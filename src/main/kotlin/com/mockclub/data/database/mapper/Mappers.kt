@@ -24,6 +24,12 @@ fun ResultRow.toUser(): User = User(
     )
 )
 
+fun ResultRow.toFollower(): Follower = Follower(
+    followerId = this[Followers.followerId],
+    followedId = this[Followers.followedId],
+    createdAt = this[Followers.createdAt]
+)
+
 fun ResultRow.toPost(): Post = Post(
     uuid = this[Posts.uuid].toString(),
     userUuid = this[Posts.userUuid],

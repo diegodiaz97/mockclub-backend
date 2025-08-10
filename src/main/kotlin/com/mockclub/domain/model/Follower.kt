@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Follower(
-    val followerUuid: String,
-    val followedUuid: String
+    val followerId: String,
+    val followedId: String,
+    val createdAt: Long
 )
