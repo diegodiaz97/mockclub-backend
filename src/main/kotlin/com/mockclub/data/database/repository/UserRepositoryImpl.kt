@@ -2,15 +2,12 @@ package org.example.com.mockclub.data.database.repository
 
 import com.mockclub.data.database.table.Users
 import com.mockclub.domain.model.ProfileImage
-import org.example.com.mockclub.data.database.mappers.toUser
 import com.mockclub.domain.model.User
+import org.example.com.mockclub.data.database.mappers.toUser
 import org.example.com.mockclub.domain.repository.UserRepository
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
-import org.jetbrains.exposed.sql.update
 
 class UserRepositoryImpl : UserRepository {
     override suspend fun getUserById(uuid: String): User? = newSuspendedTransaction {
@@ -60,5 +57,19 @@ class UserRepositoryImpl : UserRepository {
 
     override suspend fun deleteUser(uuid: String): Boolean = newSuspendedTransaction {
         Users.deleteWhere { Users.id eq uuid } > 0
+    }
+
+    override suspend fun searchUsers(query: String, limit: Int, offset: Int): List<User> = newSuspendedTransaction {
+        val terms = query.split(" ").filter { it.isNotBlank() }
+        Users.selectAll().where {
+            terms.map { term ->
+                val pattern = "%${term.lowercase()}%"
+                (Users.name.lowerCase() like pattern) or
+                (Users.lastname.lowerCase() like pattern) or
+                (Users.username.lowerCase() like pattern) or
+                (Users.email.lowerCase() like pattern)
+            }.reduce { acc, expr -> acc and expr }
+        }.limit(limit, offset.toLong())
+            .map { it.toUser() }
     }
 }

@@ -47,6 +47,19 @@ fun Route.userRoutes() {
                 }
             }
 
+            get("/search") {
+                val query = call.request.queryParameters["q"] ?: ""
+                if (query.isBlank()) {
+                    call.respond(HttpStatusCode.BadRequest, "Query parameter 'q' is required")
+                    return@get
+                }
+                val limit = call.request.queryParameters["limit"]?.toIntOrNull() ?: 15
+                val offset = call.request.queryParameters["offset"]?.toIntOrNull() ?: 0
+
+                val users = userService.searchUsers(query, limit, offset)
+                call.respond(users)
+            }
+
             // POST /users
             post {
                 val uid = call.attributes[FirebaseUidKey]

@@ -10,4 +10,5 @@ interface UserService {
     suspend fun updateUser(user: User): Boolean
     suspend fun updateProfileImage(uid: String, image: ProfileImage): Boolean
     suspend fun deleteUser(uuid: String): Boolean
+    suspend fun searchUsers(query: String, limit: Int, offset: Int): List<User>
 }
