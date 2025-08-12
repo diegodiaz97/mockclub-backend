@@ -1,11 +1,11 @@
-package org.example.com.mockclub.data.database.models
+package com.mockclub.domain.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Post(
-    val uuid: String,
-    val userUuid: String,
+    val id: String,
+    val userId: String,
     val createdAt: Long,
     val text: String,
     val brand: String,

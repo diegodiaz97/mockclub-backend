@@ -36,7 +36,7 @@ fun Route.userRoutes() {
             get("{id}") {
                 val idParam = call.parameters["id"]
                 if (idParam == null) {
-                    return@get call.respond(HttpStatusCode.BadRequest, "UUID inválido")
+                    return@get call.respond(HttpStatusCode.BadRequest, "User ID inválido")
                 }
 
                 val user = userService.getUserById(idParam)

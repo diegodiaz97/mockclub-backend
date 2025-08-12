@@ -1,10 +1,22 @@
-package org.example.com.mockclub.data.database.mappers
+package com.mockclub.data.database.mapper
 
+import com.mockclub.data.database.table.Comments
+import com.mockclub.data.database.table.Followers
+import com.mockclub.data.database.table.Likes
+import com.mockclub.data.database.table.PostImages
+import com.mockclub.data.database.table.PostTags
+import com.mockclub.data.database.table.Posts
+import com.mockclub.data.database.table.Tags
 import com.mockclub.data.database.table.Users
+import com.mockclub.domain.model.Comment
+import com.mockclub.domain.model.Follower
+import com.mockclub.domain.model.Like
+import com.mockclub.domain.model.Post
+import com.mockclub.domain.model.PostImage
+import com.mockclub.domain.model.PostTag
 import com.mockclub.domain.model.ProfileImage
+import com.mockclub.domain.model.Tag
 import com.mockclub.domain.model.User
-import org.example.com.mockclub.data.database.models.*
-import org.example.com.mockclub.data.database.tables.*
 import org.jetbrains.exposed.sql.ResultRow
 
 fun ResultRow.toUser(): User = User(
@@ -31,8 +43,8 @@ fun ResultRow.toFollower(): Follower = Follower(
 )
 
 fun ResultRow.toPost(): Post = Post(
-    uuid = this[Posts.uuid].toString(),
-    userUuid = this[Posts.userUuid],
+    id = this[Posts.id].toString(),
+    userId = this[Posts.userId],
     createdAt = this[Posts.createdAt],
     text = this[Posts.text],
     brand = this[Posts.brand],
@@ -42,22 +54,22 @@ fun ResultRow.toPost(): Post = Post(
 
 fun ResultRow.toPostImage(): PostImage = PostImage(
     id = this[PostImages.id],
-    postUuid = this[PostImages.postUuid].toString(),
+    postId = this[PostImages.postId].toString(),
     imageUrl = this[PostImages.imageUrl]
 )
 
 fun ResultRow.toComment(): Comment = Comment(
-    uuid = this[Comments.uuid].toString(),
-    postUuid = this[Comments.postUuid].toString(),
-    userUuid = this[Comments.userUuid],
+    id = this[Comments.id].toString(),
+    postId = this[Comments.postId].toString(),
+    userId = this[Comments.userId],
     text = this[Comments.text],
     createdAt = this[Comments.createdAt],
-    parentCommentUuid = this[Comments.parentCommentUuid]?.toString()
+    parentCommentId = this[Comments.parentCommentId]?.toString()
 )
 
 fun ResultRow.toLike(): Like = Like(
-    userUuid = this[Likes.userUuid],
-    postUuid = this[Likes.postUuid].toString()
+    userId = this[Likes.userId],
+    postId = this[Likes.postId].toString()
 )
 
 fun ResultRow.toTag(): Tag = Tag(
@@ -66,7 +78,7 @@ fun ResultRow.toTag(): Tag = Tag(
 )
 
 fun ResultRow.toPostTag(): PostTag = PostTag(
-    postUuid = this[PostTags.postUuid].toString(),
+    postId = this[PostTags.postId].toString(),
     tagName = this[PostTags.tagName]
 )
 

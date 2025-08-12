@@ -3,15 +3,15 @@ package org.example.com.mockclub.data.database.repository
 import com.mockclub.data.database.table.Users
 import com.mockclub.domain.model.ProfileImage
 import com.mockclub.domain.model.User
-import org.example.com.mockclub.data.database.mappers.toUser
+import com.mockclub.data.database.mapper.toUser
 import org.example.com.mockclub.domain.repository.UserRepository
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
 class UserRepositoryImpl : UserRepository {
-    override suspend fun getUserById(uuid: String): User? = newSuspendedTransaction {
-        Users.selectAll().where { Users.id eq uuid }
+    override suspend fun getUserById(id: String): User? = newSuspendedTransaction {
+        Users.selectAll().where { Users.id eq id }
             .map { it.toUser() }
             .singleOrNull()
     }
@@ -55,8 +55,8 @@ class UserRepositoryImpl : UserRepository {
         } > 0
     }
 
-    override suspend fun deleteUser(uuid: String): Boolean = newSuspendedTransaction {
-        Users.deleteWhere { Users.id eq uuid } > 0
+    override suspend fun deleteUser(id: String): Boolean = newSuspendedTransaction {
+        Users.deleteWhere { Users.id eq id } > 0
     }
 
     override suspend fun searchUsers(query: String, limit: Int, offset: Int): List<User> = newSuspendedTransaction {

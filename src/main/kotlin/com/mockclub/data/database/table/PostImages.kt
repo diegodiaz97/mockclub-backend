@@ -1,10 +1,10 @@
-package org.example.com.mockclub.data.database.tables
+package com.mockclub.data.database.table
 
 import org.jetbrains.exposed.sql.Table
 
 object PostImages : Table("post_images") {
     val id = integer("id").autoIncrement()
-    val postUuid = uuid("post_uuid") references Posts.uuid
+    val postId = varchar("post_id", 128) references Posts.id
     val imageUrl = varchar("image_url", 500)
 
     override val primaryKey = PrimaryKey(id)

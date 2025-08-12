@@ -1,4 +1,4 @@
-package org.example.com.mockclub.data.database.models
+package com.mockclub.domain.model
 
 import kotlinx.serialization.Serializable
 

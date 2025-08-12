@@ -1,9 +1,9 @@
-package org.example.com.mockclub.data.database.models
+package com.mockclub.domain.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class CommentLike(
-    val userUuid: String,
-    val commentUuid: String
+    val userId: String,
+    val commentId: String
 )

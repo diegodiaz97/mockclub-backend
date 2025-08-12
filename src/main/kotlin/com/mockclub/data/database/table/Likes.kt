@@ -1,11 +1,10 @@
-package org.example.com.mockclub.data.database.tables
+package com.mockclub.data.database.table
 
-import com.mockclub.data.database.table.Users
 import org.jetbrains.exposed.sql.Table
 
 object Likes : Table("likes") {
-    val userUuid = varchar("user_uuid", 128) references Users.id
-    val postUuid = uuid("post_uuid") references Posts.uuid
+    val userId = varchar("user_id", 128) references Users.id
+    val postId = varchar("post_id", 128) references Posts.id
 
-    override val primaryKey = PrimaryKey(userUuid, postUuid)
+    override val primaryKey = PrimaryKey(userId, postId)
 }

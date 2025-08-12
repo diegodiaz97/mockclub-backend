@@ -1,10 +1,10 @@
 package com.mockclub.data.database
 
 import com.mockclub.data.database.table.Users
-import org.example.com.mockclub.data.database.tables.Comments
-import org.example.com.mockclub.data.database.tables.Followers
-import org.example.com.mockclub.data.database.tables.Likes
-import org.example.com.mockclub.data.database.tables.Posts
+import com.mockclub.data.database.table.Comments
+import com.mockclub.data.database.table.Followers
+import com.mockclub.data.database.table.Likes
+import com.mockclub.data.database.table.Posts
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction

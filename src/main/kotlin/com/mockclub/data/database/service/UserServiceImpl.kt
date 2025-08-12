@@ -12,8 +12,8 @@ class UserServiceImpl(
 
     val searchCache = SimpleCache<List<User>>(ttlMillis = 5 * 60 * 1000) // cache 5 minutos
 
-    override suspend fun getUserById(uuid: String): User? {
-        return userRepository.getUserById(uuid)
+    override suspend fun getUserById(id: String): User? {
+        return userRepository.getUserById(id)
     }
 
     override suspend fun getUserByUsername(username: String): User? {
@@ -39,8 +39,8 @@ class UserServiceImpl(
         return userRepository.updateProfileImage(uid, image)
     }
 
-    override suspend fun deleteUser(uuid: String): Boolean {
-        return userRepository.deleteUser(uuid)
+    override suspend fun deleteUser(id: String): Boolean {
+        return userRepository.deleteUser(id)
     }
 
     override suspend fun searchUsers(query: String, limit: Int, offset: Int): List<User> {

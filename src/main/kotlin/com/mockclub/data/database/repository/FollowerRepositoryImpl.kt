@@ -2,8 +2,8 @@ package org.example.com.mockclub.data.database.repository
 
 import com.mockclub.data.database.table.Users
 import com.mockclub.domain.model.User
-import org.example.com.mockclub.data.database.mappers.toUser
-import org.example.com.mockclub.data.database.tables.Followers
+import com.mockclub.data.database.mapper.toUser
+import com.mockclub.data.database.table.Followers
 import org.example.com.mockclub.domain.repository.FollowerRepository
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and

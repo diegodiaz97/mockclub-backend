@@ -1,10 +1,10 @@
-package org.example.com.mockclub.data.database.models
+package com.mockclub.domain.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class PostImage(
     val id: Int,
-    val postUuid: String,
+    val postId: String,
     val imageUrl: String
 )

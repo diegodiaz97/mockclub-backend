@@ -1,6 +1,5 @@
-package org.example.com.mockclub.data.database.tables
+package com.mockclub.data.database.table
 
-import com.mockclub.data.database.table.Users
 import org.jetbrains.exposed.sql.Table
 
 object Followers : Table("followers") {

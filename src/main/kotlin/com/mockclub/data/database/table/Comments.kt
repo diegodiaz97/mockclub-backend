@@ -1,15 +1,14 @@
-package org.example.com.mockclub.data.database.tables
+package com.mockclub.data.database.table
 
-import com.mockclub.data.database.table.Users
 import org.jetbrains.exposed.sql.Table
 
 object Comments : Table("comments") {
-    val uuid = uuid("uuid")
-    val postUuid = uuid("post_uuid") references Posts.uuid
-    val userUuid = varchar("user_uuid", 128) references Users.id
+    val id = varchar("id", 128)
+    val postId = varchar("post_id", 128) references Posts.id
+    val userId = varchar("user_id", 128) references Users.id
     val text = varchar("text", 500)
     val createdAt = long("created_at")
-    val parentCommentUuid = uuid("parent_comment_uuid").nullable() // para replies
+    val parentCommentId = varchar("parent_comment_id", 128).nullable() // para replies
 
-    override val primaryKey = PrimaryKey(uuid)
+    override val primaryKey = PrimaryKey(id)
 }
