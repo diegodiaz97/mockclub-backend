@@ -14,7 +14,9 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.example.com.mockclub.di.appModule
+import org.example.com.mockclub.presentation.route.commentRoutes
 import org.example.com.mockclub.presentation.route.followerRoutes
+import org.example.com.mockclub.presentation.route.postRoutes
 import org.example.com.mockclub.presentation.route.userRoutes
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
@@ -57,6 +59,8 @@ fun Application.module() {
         healthRoute()
         userRoutes()
         followerRoutes()
+        postRoutes()
+        commentRoutes()
         // otras rutas...
     }
 }

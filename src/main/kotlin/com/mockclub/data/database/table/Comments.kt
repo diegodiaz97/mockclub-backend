@@ -9,6 +9,7 @@ object Comments : Table("comments") {
     val text = varchar("text", 500)
     val createdAt = long("created_at")
     val parentCommentId = varchar("parent_comment_id", 128).nullable() // para replies
+    val repliesCount = integer("replies_count").default(0) // contador de replies
 
     override val primaryKey = PrimaryKey(id)
 }

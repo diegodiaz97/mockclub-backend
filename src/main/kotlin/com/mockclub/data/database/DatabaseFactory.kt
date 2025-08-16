@@ -1,10 +1,6 @@
 package com.mockclub.data.database
 
-import com.mockclub.data.database.table.Users
-import com.mockclub.data.database.table.Comments
-import com.mockclub.data.database.table.Followers
-import com.mockclub.data.database.table.Likes
-import com.mockclub.data.database.table.Posts
+import com.mockclub.data.database.table.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -31,7 +27,17 @@ object DatabaseFactory {
                 )
 
                 transaction {
-                    SchemaUtils.create(Users, Followers, Posts, Likes, Comments)
+                    SchemaUtils.create(
+                        Users,
+                        Followers,
+                        Posts,
+                        PostImages,
+                        PostTags,
+                        Tags,
+                        Likes,
+                        Comments,
+                        CommentLikes
+                    )
                 }
 
                 println("✅ Database initialized successfully")

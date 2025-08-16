@@ -1,14 +1,13 @@
-package com.mockclub.domain.model
+package org.example.com.mockclub.domain.request
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Post(
-    val id: String,
-    val userId: String,
-    val createdAt: Long,
+data class CreatePostRequest(
     val text: String,
     val brand: String,
     val team: String,
     val ratio: Float,
+    val images: List<String>,
+    val tags: List<String>
 )
