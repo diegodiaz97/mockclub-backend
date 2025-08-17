@@ -144,7 +144,7 @@ class PostRepositoryImpl : PostRepository {
     }
 
     // Función que arma la lista de PostWithExtras a partir de posts y currentUserId
-    private suspend fun buildPostWithExtras(
+    override  suspend fun buildPostWithExtras(
         postsList: List<Post>,
         currentUserId: String
     ): List<PostWithExtras> = newSuspendedTransaction {
@@ -212,5 +212,9 @@ class PostRepositoryImpl : PostRepository {
             .selectAll().where { Likes.postId eq postId }
             .limit(limit, offset.toLong())
             .map { it.toUser() }
+    }
+
+    override suspend fun getPostCountByUser(userId: String): Int = newSuspendedTransaction {
+        Posts.selectAll().where { Posts.userId eq userId }.count().toInt()
     }
 }

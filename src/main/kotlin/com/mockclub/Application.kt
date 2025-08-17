@@ -17,6 +17,7 @@ import org.example.com.mockclub.di.appModule
 import org.example.com.mockclub.presentation.route.commentRoutes
 import org.example.com.mockclub.presentation.route.followerRoutes
 import org.example.com.mockclub.presentation.route.postRoutes
+import org.example.com.mockclub.presentation.route.searchRoutes
 import org.example.com.mockclub.presentation.route.userRoutes
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
@@ -61,6 +62,7 @@ fun Application.module() {
         followerRoutes()
         postRoutes()
         commentRoutes()
+        searchRoutes()
         // otras rutas...
     }
 }

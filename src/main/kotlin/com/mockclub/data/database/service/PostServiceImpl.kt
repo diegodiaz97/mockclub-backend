@@ -36,4 +36,6 @@ class PostServiceImpl(private val repo: PostRepository) : PostService {
     override suspend fun unlikePost(postId: String, userId: String) = repo.unlikePost(postId, userId)
     override suspend fun getPostLikes(postId: String, limit: Int, offset: Int) =
         repo.getPostLikes(postId, limit, offset)
+
+    override suspend fun getPostCountByUser(userId: String): Int = repo.getPostCountByUser(userId)
 }

@@ -13,4 +13,5 @@ interface PostService {
     suspend fun unlikePost(postId: String, userId: String): Boolean
     suspend fun getPostLikes(postId: String, limit: Int, offset: Int): List<User>
     suspend fun deletePost(postId: String): Boolean
+    suspend fun getPostCountByUser(userId: String): Int
 }

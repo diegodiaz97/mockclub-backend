@@ -54,7 +54,8 @@ fun Route.postRoutes() {
             }
 
             delete("/{id}") {
-                val postId = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest, "Post ID missing")
+                val postId =
+                    call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest, "Post ID missing")
 
                 try {
                     val deleted = postService.deletePost(postId)
@@ -101,6 +102,15 @@ fun Route.postRoutes() {
 
                 val likes = postService.getPostLikes(id, limit, offset)
                 call.respond(likes)
+            }
+
+            get("/count/{userId}") {
+                val userId = call.parameters["userId"] ?: return@get call.respond(
+                    HttpStatusCode.BadRequest,
+                    "Invalid userId"
+                )
+
+                call.respond(mapOf("count" to postService.getPostCountByUser(userId)))
             }
         }
     }
