@@ -21,8 +21,11 @@ class PostRepositoryImpl : PostRepository {
                 it[userId] = post.userId
                 it[createdAt] = post.createdAt
                 it[text] = post.text
-                it[brand] = post.brand
                 it[team] = post.team
+                it[brand] = post.brand
+                it[teamLogo] = post.teamLogo
+                it[brandLogo] = post.brandLogo
+                it[designerLogo] = post.designerLogo
                 it[ratio] = post.ratio
             }
 
@@ -144,7 +147,7 @@ class PostRepositoryImpl : PostRepository {
     }
 
     // Función que arma la lista de PostWithExtras a partir de posts y currentUserId
-    override  suspend fun buildPostWithExtras(
+    override suspend fun buildPostWithExtras(
         postsList: List<Post>,
         currentUserId: String
     ): List<PostWithExtras> = newSuspendedTransaction {

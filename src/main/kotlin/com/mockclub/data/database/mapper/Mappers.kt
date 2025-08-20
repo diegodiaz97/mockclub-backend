@@ -32,8 +32,11 @@ fun ResultRow.toPost(): Post = Post(
     userId = this[Posts.userId],
     createdAt = this[Posts.createdAt],
     text = this[Posts.text],
-    brand = this[Posts.brand],
     team = this[Posts.team],
+    brand = this[Posts.brand],
+    teamLogo = this[Posts.teamLogo],
+    brandLogo = this[Posts.brandLogo],
+    designerLogo = this[Posts.designerLogo],
     ratio = this[Posts.ratio]
 )
 

@@ -8,7 +8,10 @@ data class Post(
     val userId: String,
     val createdAt: Long,
     val text: String,
-    val brand: String,
     val team: String,
+    val brand: String,
+    val teamLogo: String,
+    val brandLogo: String,
+    val designerLogo: String?,
     val ratio: Float,
 )

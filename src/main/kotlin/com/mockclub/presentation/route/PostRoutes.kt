@@ -46,6 +46,9 @@ fun Route.postRoutes() {
                     text = request.text,
                     brand = request.brand,
                     team = request.team,
+                    teamLogo = request.teamLogo,
+                    brandLogo = request.brandLogo,
+                    designerLogo = request.designerLogo,
                     ratio = request.ratio
                 )
                 val success = postService.createPost(userId, post, request.images, request.tags)
