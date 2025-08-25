@@ -6,8 +6,8 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object DatabaseFactory {
-    private const val MAX_RETRIES = 15
-    private const val RETRY_DELAY_MS = 2000L // 2 segundos
+    private const val MAX_RETRIES = 5
+    private const val RETRY_DELAY_MS = 1000L // 1 segundo
 
     fun init() {
         var attempt = 0
